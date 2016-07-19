@@ -38,7 +38,6 @@ public class AntContainer {
     }
 
     private void initSoldiers() {
-
         for (int i = 0; i < COUNTER; i++) {
             ants.add(new Soldier());
         }
