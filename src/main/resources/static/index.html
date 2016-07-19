@@ -2,11 +2,131 @@
 <HTML>
 <HEAD>
     <TITLE>
-        A Small Hello
+        Ants
     </TITLE>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-bottom: 100px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px 15px;
+        }
+
+        .wrapper {
+            width: 400px;
+        }
+
+        .left {
+            width: 200px;
+            float: left;
+        }
+
+        .right {
+            width: 200px;
+            float: left;
+        }
+
+        .antButton {
+            width: 150px;
+            height: 30px;
+        }
+
+    </style>
+
+
 </HEAD>
-<BODY>
-<H1>Hi</H1>
-<P>This is very minimal "hello world" HTML document.</P>
+<BODY onload="bodyload()">
+
+
+<div class="wrapper">
+    <div class="left">
+        <table>
+            <thead>
+            <tr>
+                <td>Ant Dead</td>
+                <td>Ant Status</td>
+            </tr>
+            </thead>
+            <tbody id="antsTablebody"></tbody>
+        </table>
+
+    </div>
+
+    <div class="right">
+        <button class="antButton" type="button" onclick="damageAnts()">Damage Ants</button>
+    </div>
+
+</div>
+
+
+<SCRIPT language="JavaScript">
+
+    var url = "/ants";
+
+    function bodyload() {
+
+        sendRest("get", url, filltable);
+    }
+
+    function sendRest(type, url, callback) {
+        try {
+            var xhr = createXHR();
+            if (xhr) {
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        if (callback) {
+                            callback(xhr.responseText);
+                        }
+                    }
+                };
+                xhr.open(type, url, true);
+                xhr.send();
+            }
+        } catch (ex) {
+            console.error(ex);
+        }
+    }
+
+    function createXHR() {
+        if (typeof XMLHttpRequest != "undefined") {
+            return new XMLHttpRequest();
+        } else {
+            throw new Error("No XHR object available.");
+        }
+    }
+
+    function filltable(data, id) {
+
+        var elements = JSON.parse(data);
+
+        var tablebody = document.getElementById("antsTablebody");
+
+        for (var i in elements) {
+            var trc = document.createElement('tr');
+            var td1 = document.createElement('td');
+            var td2 = document.createElement('td');
+            td1.innerHTML = elements[i].antDead;
+            td2.innerHTML = elements[i].antStatus;
+            trc.appendChild(td1);
+            trc.appendChild(td2);
+            tablebody.appendChild(trc);
+        }
+    }
+
+    function damageAnts() {
+        sendRest("post", url, reloadpage);
+    }
+
+    function reloadpage() {
+        location.reload(true);
+    }
+
+</SCRIPT>
+
+
 </BODY>
 </HTML>

@@ -11,9 +11,9 @@ public abstract class AbstractAnt {
 
         health = getHealthValue();
 
-        if (health > getDamageValue()) {
+        if (health >= getDamageValue()) {
 
-            if (percentage > health) {
+            if (percentage >= health) {
                 health = 0d;
             } else {
                 health = (health - percentage);
