@@ -1,0 +1,33 @@
+package com.lastmile.model.impl;
+
+import com.lastmile.model.Ant;
+import com.lastmile.model.abstracts.AbstractAnt;
+
+/**
+ * Created by jan on 19/07/2016.
+ */
+public class Worker extends AbstractAnt implements Ant {
+
+    private final static Double DAMAGE_VALUE= 50d;
+
+
+
+    @Override
+    public boolean isAntDead() {
+
+        return super.getHealthValue() < DAMAGE_VALUE ? true : false;
+    }
+
+    @Override
+    public void damage(final Integer damageValue) {
+
+        super.calculateAntHealth(damageValue);
+    }
+
+    @Override
+    public Double getAntStatus() {
+        return health;
+    }
+
+
+}
