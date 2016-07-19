@@ -48,4 +48,8 @@ public class AntContainer {
         return ants;
     }
 
+    public void setAnts(final List<Ant> ants) {
+        this.ants = ants;
+    }
+
 }
