@@ -11,7 +11,7 @@ public abstract class AbstractAnt {
 
         health = getHealthValue();
 
-        if (health >= percentage) {
+        if (health > getDamageValue()) {
             health = (health - percentage);
         }
     }
@@ -21,4 +21,5 @@ public abstract class AbstractAnt {
         return health;
     }
 
+    protected abstract Double getDamageValue();
 }

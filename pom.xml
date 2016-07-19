@@ -13,6 +13,9 @@
         <java-version>1.8</java-version>
         <jdk.version>1.8</jdk.version>
 
+        <!-- Spring -->
+        <org.springframework.version>1.3.6.RELEASE</org.springframework.version>
+
         <!--Test-->
         <junit.version>4.11</junit.version>
 
@@ -20,6 +23,15 @@
 
 
     <dependencies>
+
+        <!-- Spring Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
+        <!--Test-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -31,6 +43,10 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.0</version>
@@ -41,5 +57,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>

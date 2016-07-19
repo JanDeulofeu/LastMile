@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 /**
  * Created by jan on 19/07/2016.
  */
-public class Worker extends AbstractAnt implements Ant {
+public class Soldier extends AbstractAnt implements Ant {
 
-    private final static Double DAMAGE_VALUE= 50d;
+    private final static Double DAMAGE_VALUE= 66d;
 
 
 
