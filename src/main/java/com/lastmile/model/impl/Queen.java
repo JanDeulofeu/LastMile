@@ -9,9 +9,10 @@ import org.springframework.stereotype.Component;
  */
 public class Queen extends AbstractAnt implements Ant {
 
-    private final static Double DAMAGE_VALUE= 20d;
+    private final static Double DAMAGE_VALUE = 20d;
 
-
+    public Queen() {
+    }
 
     @Override
     public boolean isAntDead() {

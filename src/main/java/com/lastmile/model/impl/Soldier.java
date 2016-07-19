@@ -11,7 +11,8 @@ public class Soldier extends AbstractAnt implements Ant {
 
     private final static Double DAMAGE_VALUE= 66d;
 
-
+    public Soldier() {
+    }
 
     @Override
     public boolean isAntDead() {
